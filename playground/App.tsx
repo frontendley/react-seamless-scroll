@@ -5,21 +5,43 @@ const demo = Array.from({
   length: 10
 }, (_, index) => index)
 
-const App = () =>
-// const [scrollOptions, setScrollOptions] = useState({
-//   isHover: true,
-//   step: 1,
-// })
+const App = () => {
+  const [scrollOptions, setScrollOptions] = useState({
+    hoverStop: true,
+    step: 1,
+  })
+  const toggleIsHover = () => {
+    setScrollOptions({
+      ...scrollOptions,
+      hoverStop: !scrollOptions.hoverStop
+    })
+  }
 
-  (
-    <div className="container">
-      <div className="option">
-        <div className="row">
-          <div className="property"></div>
-          <div className="setProperty"></div>
+  const onChangeStep = (e) => {
+    if (!e.target.value) return
+    setScrollOptions({
+      ...scrollOptions,
+      step: e.target.value
+    })
+  }
+
+
+  return (
+    <div className="container" style={{display: "flex", gap: "10px"}}>
+      <div className="option" style={{display: "flex", flexDirection: "column", gap: "8px"}}>
+        <div className="row" style={{display: "flex", gap: "10px"}}>
+          <div className="property">isHover: {`${scrollOptions.hoverStop}`}</div>
+          <div className="setProperty">
+            <button onClick={() => toggleIsHover()}> toggle isHover</button>
+          </div>
+        </div>
+        <div className="row" style={{display: "flex", gap: "10px"}}>
+          <div className="property">step:
+            <input value={scrollOptions.step} onChange={onChangeStep}/>
+          </div>
         </div>
       </div>
-      <SeamLess>
+      <SeamLess {...scrollOptions}>
         <div className="demoContainer">
           {
             demo.map((item, index) => <li key={index}>{item}{index}</li>)
@@ -28,6 +50,7 @@ const App = () =>
       </SeamLess>
     </div>
   )
+}
 
 
 export default App
