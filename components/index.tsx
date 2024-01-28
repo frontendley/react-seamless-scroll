@@ -12,7 +12,8 @@ const ReactSeamLess: React.FC<Option> = (
     step = 1,
     ...htmlProps
   } = props
-
+  if (!React.isValidElement(children))
+    throw new Error("children must be an valid element")
   // hover stop
   const [isHover, setIsHover] = useState<boolean>(false)
   const onMouseEnter = () => setIsHover(true)
