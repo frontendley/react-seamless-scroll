@@ -10,3 +10,8 @@ type Option = {
     hoverStop?: boolean
     step?: number
   } & ReactSeamLessProps
+
+// eslint-disable-next-line init-declarations
+declare const SeamLess: React.FC<Option>
+
+export default SeamLess
