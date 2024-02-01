@@ -6,7 +6,7 @@ interface ReactSeamLessProps
     children: ReactElement
 }
 
-type Option = {
+export type Option = {
     hoverStop?: boolean
     step?: number
   } & ReactSeamLessProps

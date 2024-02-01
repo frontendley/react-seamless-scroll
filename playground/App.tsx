@@ -41,7 +41,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      <SeamLess {...scrollOptions}>
+      <SeamLess {...scrollOptions} style={{height: "190px"}}>
         <div className="demoContainer">
           {
             demo.map((item, index) => <li key={index}>{item}{index}</li>)

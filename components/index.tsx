@@ -10,6 +10,7 @@ const ReactSeamLess: React.FC<Option> = (
     children,
     hoverStop = true,
     step = 1,
+    style,
     ...htmlProps
   } = props
   if (!React.isValidElement(children))
@@ -65,9 +66,7 @@ const ReactSeamLess: React.FC<Option> = (
     <div
       className="wrap"
       style={{
-        width: "300px",
-        height: targetNodeSize?.height,
-        border: "1px solid #333",
+        ...style,
         overflow: "hidden"
       }}
       {...htmlProps}
